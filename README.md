@@ -13,10 +13,9 @@ __ACI - Creation__ | 100% | Currently pulling only from public registry
 __ACI - Check Status__ | 0% |
 __ACI - Event Handler__ | 0% |
 __ACI - Deletion__ | 100% |
-__In-container event handler__ | 0% |
-__Container Image - Test image__ | 20% |
+__In-container event handler__ | 1% |
+__Container Image - Test image__ | 80% |  Missing event handler
 __Container Image - Production Image__ | 80% | Missing event handler, Huge size
-
 
 ## How it works
 
