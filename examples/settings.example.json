@@ -12,6 +12,6 @@
       "AzureDevOpsAccessToken": "AZURE_DEVOPS_PAT",
       "GitHubAccessToken": "GITHUB_PAT",
       "MaxParallelism":  3,
-      "UseTestImage": false,      
+      "UseTestImage": false      
     }
   }

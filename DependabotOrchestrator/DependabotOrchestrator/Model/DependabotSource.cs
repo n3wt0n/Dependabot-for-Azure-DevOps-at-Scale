@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DependabotOrchestrator.Extensions;
+using System;
 using System.Linq;
-using System.Text;
 
 namespace DependabotOrchestrator.Model
 {
@@ -16,6 +15,9 @@ namespace DependabotOrchestrator.Model
         public string PullRequestAssignee { get; set; }
 
         /*VIEWMODEL PROPERTIES*/
+
+        public string InstanceID { get; set; }
+
         public string ProjectPath
             => AzDoHosts.Any(s => RepoUri.ToString().Contains(s)) 
                 ? RepoUri.AbsolutePath.TrimStart('/')
