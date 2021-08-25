@@ -15,7 +15,7 @@ on:
 
 env:
   imageName: dependabot-azuredevops-atscale-testimage
-  registryName: asd
+  registryName: n3wt0n
 
 jobs:
 
@@ -29,4 +29,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile.test --tag $imageName:${{ github.run_id }}
+      run: docker build . --file Dockerfile.test --tag $registryName/$imageName:${{ github.run_id }}
+    - name: Login to Docker
+      run: docker login -u $registryName -p ${{ secrets.DOCKER_HUB_PAT }} 
+    - name: Push the Docker image to Docker Hub
+      run: docker push $registryName/$imageName:${{ github.run_id }}
