@@ -1,0 +1,32 @@
+name: Test Docker Image CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - main
+    paths: 
+      - docker
+  pull_request:
+    branches:
+      - main
+    paths: 
+      - docker
+
+env:
+  imageName: dependabot-azuredevops-atscale-testimage
+  registryName: asd
+
+jobs:
+
+  buildAndPush:
+    name: Build and Push image
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docker
+        
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile.test --tag $imageName:${ github.run_id}
