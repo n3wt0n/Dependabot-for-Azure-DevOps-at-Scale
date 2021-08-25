@@ -23,6 +23,7 @@ namespace DependabotOrchestrator
 {
     public static class DependabotOrchestrator
     {
+
         [FunctionName("Orchestrator_HttpStart")]
         public static async Task<HttpResponseMessage> HttpStart(
            [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestMessage req,
@@ -33,6 +34,8 @@ namespace DependabotOrchestrator
             string instanceId = await starter.StartNewAsync("Orchestrator", sources);
 
             logger.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+            Settings.FunctionsBaseUrl = $"{req.RequestUri.Scheme}://{req.RequestUri.Authority}/api";
 
             return starter.CreateCheckStatusResponse(req, instanceId);
         }
@@ -138,7 +141,8 @@ namespace DependabotOrchestrator
                 { "PACKAGE_MANAGER", source.PackageManager.Name() },
                 { "PROJECT_PATH", source.ProjectPath },
                 { "AZURE_ACCESS_TOKEN", Settings.AzureDevOpsAccessToken },
-                { "ORCHESTRATOR_INSTANCE_ID", source.InstanceID }
+                { "ORCHESTRATOR_INSTANCE_ID", source.InstanceID },
+                { "JOBCOMPLETE_FUNCTION_URL", $"{Settings.FunctionsBaseUrl}/jobfinished" }
             };
 
             if (!string.IsNullOrWhiteSpace(source.Branch))

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DependabotOrchestrator.Model
+﻿namespace DependabotOrchestrator.Model
 {
     public enum PackageManagerType
     {
