@@ -29,4 +29,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile.test --tag $imageName:${ github.run_id}
+      run: docker build . --file Dockerfile.test --tag $imageName:${{ github.run_id }}
