@@ -1,0 +1,5 @@
+FROM alpine:3.14
+
+COPY ["test-workload.sh", "Test/"]
+
+ENTRYPOINT ["sh", "Test/test-workload.sh"]
