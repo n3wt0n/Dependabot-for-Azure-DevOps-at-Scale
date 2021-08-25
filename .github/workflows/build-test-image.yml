@@ -29,8 +29,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile.test --tag $registryName/$imageName:${{ github.run_id }}
+      run: docker build . --file Dockerfile.test -t $registryName/$imageName:${{ github.run_id }} -t $registryName/$imageName:latest
     - name: Login to Docker
       run: docker login -u $registryName -p ${{ secrets.DOCKER_HUB_PAT }} 
     - name: Push the Docker image to Docker Hub
-      run: docker push $registryName/$imageName:${{ github.run_id }}
+      run: docker push --all-tags $registryName/$imageName 
