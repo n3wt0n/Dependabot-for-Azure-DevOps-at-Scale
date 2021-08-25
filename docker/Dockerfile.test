@@ -2,4 +2,6 @@ FROM alpine:3.14
 
 COPY ["test-workload.sh", "Test/"]
 
+RUN apk --no-cache add curl
+
 ENTRYPOINT ["sh", "Test/test-workload.sh"]
