@@ -27,9 +27,16 @@ __Container Image - Production Image__ | 80% | Missing event handler, Huge size
 
 ![ACI Orchestrator Flow](/assets/ACI_Orchestration_Flow.jpg)
 
+### Prerequisites
+
+- PAT on Azure DevOps
+- PAT on GitHub
+- Service Principal in Azure to create ACI
+- Resource Group in Azure
+
 ## Container
 
-To support this, a modified version of the [Dependabot Script container](https://github.com/dependabot/dependabot-script) is used.
+To support the flow above, a modified version of the [Dependabot Script container](https://github.com/dependabot/dependabot-script) is used.
 
 It takes the original, and add the components needed to check the execution of the job and report back to the orchestrator.
 

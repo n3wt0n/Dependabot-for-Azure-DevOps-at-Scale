@@ -108,6 +108,9 @@ namespace DependabotOrchestrator
             string containerImage,
             DependabotSource source)
         {
+            //Add a random number to the ContainerGroup name to avoid conflicts
+            containerGroupName += DateTime.Now.Millisecond;
+
             Console.WriteLine($"\nCreating container group '{containerGroupName}'...");
 
             // Get the resource group's region

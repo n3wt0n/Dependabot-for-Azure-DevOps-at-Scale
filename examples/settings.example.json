@@ -8,8 +8,10 @@
       "ServicePrincipalTenantID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "SubscriptionID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "ResourceGroupName": "AZURE_RESOURCE_GROUP",
+      "ContainerGroupName": "CONTAINER_GROUP_NAME_FOR_ACI",
       "AzureDevOpsAccessToken": "AZURE_DEVOPS_PAT",
       "GitHubAccessToken": "GITHUB_PAT",
-      "UseTestImage": false
+      "MaxParallelism":  3,
+      "UseTestImage": false,      
     }
   }

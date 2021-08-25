@@ -60,19 +60,12 @@ namespace DependabotOrchestrator.Model
                 throw new ArgumentNullException("ResourceGroupName environment variable is null");
             }
 
-            ContainerGroupName = Environment.GetEnvironmentVariable("ContainerGroupName");
-            if (string.IsNullOrWhiteSpace(ContainerGroupName))
-            {
-                _logger.LogWarning("ContainerGroupName environment variable is null. Reverting to default");
-                ContainerGroupName = Constants.DefaultContainerGroupName;
-            }
-
-            ContainerImageTag = Environment.GetEnvironmentVariable("ContainerImageTag");
-            if (string.IsNullOrWhiteSpace(ContainerImageTag))
-            {
-                _logger.LogWarning("ContainerImageTag environment variable is null. Reverting to default");
+            //ContainerImageTag = Environment.GetEnvironmentVariable("ContainerImageTag");
+            //if (string.IsNullOrWhiteSpace(ContainerImageTag))
+            //{
+            //    _logger.LogWarning("ContainerImageTag environment variable is null. Reverting to default");
                 ContainerImageTag = Constants.DefaultContainerImageTag;
-            }
+            //}
 
             if (int.TryParse(Environment.GetEnvironmentVariable("MaxParallelism"), out int paralles) && paralles >= 0)
                 MaxParallelism = paralles;
@@ -101,7 +94,7 @@ namespace DependabotOrchestrator.Model
             if (string.IsNullOrWhiteSpace(ContainerGroupName))
                 _logger.LogWarning("GitHubAccessToken environment variable is null. Won' be used, you may incur in API limits");
             
-            bool.TryParse(Environment.GetEnvironmentVariable("GitHubAccessToken"), out bool useTestImage);
+            bool.TryParse(Environment.GetEnvironmentVariable("UseTestImage"), out bool useTestImage);
             UseTestImage = useTestImage;
 
             FullContainerImageName = $"{(UseTestImage ? Constants.TestContainerImageName : Constants.ContainerImageName)}:{ContainerImageTag}".ToLower();
