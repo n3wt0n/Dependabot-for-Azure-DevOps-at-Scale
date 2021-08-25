@@ -1,10 +1,30 @@
 # Dependabot for Azure DevOps at Scale
 
-This project allows you run GitHub Dependabot on an Azure DevOps repository
+This project allows you run [GitHub Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/about-alerts-for-vulnerable-dependencies) on an Azure DevOps repository
+
+## Current Status: _Development In Progress_
+
+Component | Status | Notes
+:--- | :--- | :---
+__Orchestrator Trigger__ | 100% |
+__Main Orchestrator__ | 90% |
+__ACI Orchestrator__ | 80% |
+__ACI - Creation__ | 100% | Currently pulling only from public registry
+__ACI - Check Status__ | 0% |
+__ACI - Event Handler__ | 0% |
+__ACI - Deletion__ | 100% |
+__In-container event handler__ | 0% |
+__Container Image - Test image__ | 0% |
+__Container Image - Production Image__ | 80% | Missing event handler, Huge size
+
 
 ## How it works
 
+[Description TBC]
+
 ![Main Flow](/assets/Main_Flow.jpg)
+
+[Description TBC]
 
 ![ACI Orchestrator Flow](/assets/ACI_Orchestration_Flow.jpg)
 
