@@ -1,0 +1,15 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+      "AzureWebJobsStorage": "STORAGE_ACCOUNT_CONNECTION_STRING",
+      "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+      "ServicePrincipalClientID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "ServicePrincipalClientSecret": "CLIENT_SECRET",
+      "ServicePrincipalTenantID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "SubscriptionID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "ResourceGroupName": "AZURE_RESOURCE_GROUP",
+      "AzureDevOpsAccessToken": "AZURE_DEVOPS_PAT",
+      "GitHubAccessToken": "GITHUB_PAT",
+      "UseTestImage": false
+    }
+  }

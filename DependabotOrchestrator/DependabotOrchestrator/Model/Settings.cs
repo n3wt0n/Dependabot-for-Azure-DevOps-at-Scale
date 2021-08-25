@@ -17,6 +17,7 @@ namespace DependabotOrchestrator.Model
         public static int MaxParallelism { get; private set; }
         public static string AzureDevOpsAccessToken { get; private set; }
         public static string GitHubAccessToken { get; private set; }
+        public static bool UseTestImage { get; private set; }
 
         public static string FullContainerImageName { get; private set; }
 
@@ -99,8 +100,11 @@ namespace DependabotOrchestrator.Model
             GitHubAccessToken = Environment.GetEnvironmentVariable("GitHubAccessToken");
             if (string.IsNullOrWhiteSpace(ContainerGroupName))
                 _logger.LogWarning("GitHubAccessToken environment variable is null. Won' be used, you may incur in API limits");
+            
+            bool.TryParse(Environment.GetEnvironmentVariable("GitHubAccessToken"), out bool useTestImage);
+            UseTestImage = useTestImage;
 
-            FullContainerImageName = $"{Constants.ContainerImageName}:{ContainerImageTag}".ToLower();
+            FullContainerImageName = $"{(UseTestImage ? Constants.TestContainerImageName : Constants.ContainerImageName)}:{ContainerImageTag}".ToLower();
         }
     }
 }
