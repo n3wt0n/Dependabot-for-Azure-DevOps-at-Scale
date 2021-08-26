@@ -8,7 +8,7 @@ Component                               | Status| Notes
 :-----                                  | :-----| :-----
 __Orchestrator Trigger__                | 100%  |
 __Main Orchestrator__                   | 90%   |
-__ACI Orchestrator__                    | 80%   |
+__ACI Orchestrator__                    | 90%   |
 __ACI - Creation__                      | 100%  | Currently pulling only from public registry
 __ACI - Check Status__                  | 0%    |
 __ACI - Event Handler__                 | 80%   |

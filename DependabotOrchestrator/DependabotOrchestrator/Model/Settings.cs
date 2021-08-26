@@ -18,7 +18,7 @@ namespace DependabotOrchestrator.Model
         public static string AzureDevOpsAccessToken { get; private set; }
         public static string GitHubAccessToken { get; private set; }
         public static bool UseTestImage { get; private set; }
-        public static string FunctionsBaseUrl { get; set; }
+        public static string FunctionsBaseUrl { get; private set; }
 
 
         public static string FullContainerImageName { get; private set; }
@@ -100,6 +100,8 @@ namespace DependabotOrchestrator.Model
             UseTestImage = useTestImage;
 
             FullContainerImageName = $"{(UseTestImage ? Constants.TestContainerImageName : Constants.ContainerImageName)}:{ContainerImageTag}".ToLower();
+
+            FunctionsBaseUrl = $"https://{Environment.GetEnvironmentVariable("WEBSITE_HOSTNAME")}/api";
         }
     }
 }
