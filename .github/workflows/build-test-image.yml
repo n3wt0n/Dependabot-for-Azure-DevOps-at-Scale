@@ -6,12 +6,12 @@ on:
     branches: 
       - main
     paths: 
-      - docker
+      - docker/**
   pull_request:
     branches:
       - main
     paths: 
-      - docker
+      - docker/**
 
 env:
   imageName: dependabot-azuredevops-atscale-testimage
