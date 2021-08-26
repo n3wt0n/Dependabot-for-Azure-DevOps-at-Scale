@@ -1,7 +1,11 @@
 FROM alpine:latest
 
+COPY ["startup-script.test.sh", "Test/"]
+
 COPY ["test-workload.sh", "Test/"]
+
+COPY ["event-handler.sh", "Test/"]
 
 RUN apk --no-cache add curl
 
-ENTRYPOINT ["sh", "Test/test-workload.sh"]
+ENTRYPOINT ["sh", "Test/startup-script.test.sh"]

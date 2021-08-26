@@ -128,7 +128,6 @@ namespace DependabotOrchestrator
 
             await AzureManager.DeleteContainerGroupAsync(containerGroupName, logger);
         }
-
         
     }
 }

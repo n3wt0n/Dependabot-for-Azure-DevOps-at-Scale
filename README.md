@@ -14,7 +14,7 @@ __ACI - Check Status__                  | 0%    |
 __ACI - Event Handler__                 | 80%   |
 __ACI - Deletion__                      | 100%  |
 __In-container event handler__          | 50%   |
-__Container Image - Test image__        | 80%   | Missing event handler
+__Container Image - Test image__        | 100%  |
 __Container Image - Production Image__  | 50%   | Missing event handler, Huge size, Missing automated creation
 __Deployment Scripts__                  | 0%    |
 
