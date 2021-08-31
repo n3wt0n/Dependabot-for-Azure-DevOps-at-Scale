@@ -1,0 +1,47 @@
+name: Prod Docker Image CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - main
+    paths: 
+      - docker/**
+  pull_request:
+    branches:
+      - main
+    paths: 
+      - docker/**
+
+env:
+  imageName: dependabot-azuredevops-atscale
+  registryName: n3wt0n
+
+jobs:
+
+  buildAndPush:
+    name: Build and Push image
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docker
+        
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Checkout Dependabot-script code
+      run: git clone https://github.com/dependabot/dependabot-script.git
+      
+    - name: Build Dependabot-script image
+      run: |
+        cd dependabot-script
+        docker build -t "dependabot-script-local" -f Dockerfile .
+    
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile.prod -t $registryName/$imageName:${{ github.run_id }} -t $registryName/$imageName:latest
+      
+    - name: Login to Docker
+      run: docker login -u $registryName -p ${{ secrets.DOCKER_HUB_PAT }} 
+      
+    - name: Push the Docker image to Docker Hub
+      run: docker push --all-tags $registryName/$imageName 
