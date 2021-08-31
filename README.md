@@ -1,6 +1,6 @@
 # Dependabot for Azure DevOps at Scale
 
-This project allows you run [GitHub Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/about-alerts-for-vulnerable-dependencies) on an Azure DevOps repository
+This project allows you to run [GitHub Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/about-alerts-for-vulnerable-dependencies) to scan Azure DevOps repositories, via Azure Pipelines, thanks to Azure Functions.
 
 ## Current Status: _Development In Progress_
 
