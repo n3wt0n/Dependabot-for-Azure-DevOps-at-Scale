@@ -11,11 +11,11 @@ __Main Orchestrator__                   | 90%   |
 __ACI Orchestrator__                    | 90%   |
 __ACI - Creation__                      | 100%  | Currently pulling only from public registry
 __ACI - Check Status__                  | 0%    |
-__ACI - Event Handler__                 | 80%   |
+__ACI - Event Handler__                 | 80%   | Missing: should report differently between success and failure
 __ACI - Deletion__                      | 100%  |
 __In-container event handler__          | 50%   |
 __Container Image - Test image__        | 100%  |
-__Container Image - Production Image__  | 90%   | Huge size, Missing automated creation
+__Container Image - Production Image__  | 95%   | Huge size
 __Deployment Scripts__                  | 0%    |
 
 ## How it works
