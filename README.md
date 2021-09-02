@@ -1,4 +1,6 @@
 # Dependabot for Azure DevOps at Scale
+[![Test Docker Image CI](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-test-image.yml/badge.svg)](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-test-image.yml)
+[![Prod Docker Image CI](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-prod-image.yml/badge.svg)](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-prod-image.yml)
 
 This project allows you to run [GitHub Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/about-alerts-for-vulnerable-dependencies) to scan Azure DevOps repositories, via Azure Pipelines, thanks to Azure Functions.
 
