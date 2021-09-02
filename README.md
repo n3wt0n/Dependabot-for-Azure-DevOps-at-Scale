@@ -1,4 +1,5 @@
 # Dependabot for Azure DevOps at Scale
+[![Functions CI](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/functions-ci.yml/badge.svg)](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/functions-ci.yml)
 [![Test Docker Image CI](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-test-image.yml/badge.svg)](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-test-image.yml)
 [![Prod Docker Image CI](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-prod-image.yml/badge.svg)](https://github.com/n3wt0n/Dependabot-for-Azure-DevOps-at-Scale/actions/workflows/build-prod-image.yml)
 
