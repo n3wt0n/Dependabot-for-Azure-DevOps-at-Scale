@@ -8,7 +8,6 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DependabotOrchestrator.Managers
@@ -24,11 +23,9 @@ namespace DependabotOrchestrator.Managers
         /// <summary>
         /// Creates a container group with a single container.
         /// </summary>
-        /// <param name="azure">An authenticated IAzure object.</param>
-        /// <param name="resourceGroupName">The name of the resource group in which to create the container group.</param>
-        /// <param name="containerGroupName">The name of the container group to create.</param>
-        /// <param name="containerImage">The container image name and tag, for example 'microsoft\aci-helloworld:latest'.</param>
-        /// <param name="instanceId"></param>
+        /// <param name="source">DependabotSource object</param>
+        /// <param name="logger"></param>
+        /// <returns>Container Group Name</returns>        
         public static async Task<string> CreateContainerGroupAsync(DependabotSource source, ILogger logger)
         {
             var azure = GetAzureClient();
@@ -95,9 +92,8 @@ namespace DependabotOrchestrator.Managers
         /// <summary>
         /// Deletes the specified container group.
         /// </summary>
-        /// <param name="azure">An authenticated IAzure object.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the container group.</param>
         /// <param name="containerGroupName">The name of the container group to delete.</param>
+        /// <param name="logger"></param>
         public static async Task DeleteContainerGroupAsync(string containerGroupName, ILogger logger)
         {
             var azure = GetAzureClient();

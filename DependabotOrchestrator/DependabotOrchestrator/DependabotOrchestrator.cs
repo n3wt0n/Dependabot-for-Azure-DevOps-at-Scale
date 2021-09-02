@@ -1,24 +1,15 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using DependabotOrchestrator.Managers;
+using DependabotOrchestrator.Model;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Microsoft.Azure.WebJobs.Extensions.DurableTask;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using Microsoft.Azure.Management.ContainerInstance.Fluent;
-using Microsoft.Azure.Management.Fluent;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-using DependabotOrchestrator.Model;
-using DependabotOrchestrator.Extensions;
 using System.Threading;
-using DependabotOrchestrator.Managers;
+using System.Threading.Tasks;
 
 namespace DependabotOrchestrator
 {
@@ -98,7 +89,7 @@ namespace DependabotOrchestrator
                 }
 
                 //This function deletes the ACI group once its done with its job or the timeout expired
-                await context.CallActivityAsync<string>("DeleteACIGroup", containerGroupName);
+                await context.CallActivityAsync("DeleteACIGroup", containerGroupName);
             }
             
             //TODO: set this properly
@@ -114,12 +105,10 @@ namespace DependabotOrchestrator
         }
 
         [FunctionName("CheckExecution")]
-        public static bool CheckExecution([ActivityTrigger] string containerGroupName, ILogger log)
-        {
+        public static bool CheckExecution([ActivityTrigger] string containerGroupName, ILogger log) =>
             //TODO
 
-            return true;
-        }
+            true;
 
         [FunctionName("DeleteACIGroup")]
         public static async Task Orchestrator_Delete_ACI_Group([ActivityTrigger] string containerGroupName, ILogger logger)
