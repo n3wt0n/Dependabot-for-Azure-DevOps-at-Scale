@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,12 +18,16 @@ namespace DependabotOrchestrator
     {
 
         [FunctionName("Orchestrator_HttpStart")]
-        public static async Task<HttpResponseMessage> HttpStart(
-           [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestMessage req,
-           [DurableClient] IDurableOrchestrationClient starter,
-           ILogger logger)
+        public static async Task<HttpResponseMessage> HttpStart([HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestMessage req, 
+            [DurableClient] IDurableOrchestrationClient starter, ILogger logger)
         {
             var sources = JsonConvert.DeserializeObject<List<DependabotSource>>(await req.Content.ReadAsStringAsync());
+
+            if (!sources.Any())
+                return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
+
+            Settings.Init(logger);
+
             string instanceId = await starter.StartNewAsync("Orchestrator", sources);
 
             logger.LogInformation($"Started orchestration with ID = '{instanceId}'.");
@@ -31,14 +36,14 @@ namespace DependabotOrchestrator
         }
 
         [FunctionName("Orchestrator")]
-        public static async Task Orchestrator([OrchestrationTrigger] IDurableOrchestrationContext context,
-           ILogger logger)
+        public static async Task Orchestrator([OrchestrationTrigger] IDurableOrchestrationContext context, ILogger logger)
         {
-            Settings.Init(logger);
 
             var maxParallelism = Settings.MaxParallelism;
 
             var sources = context.GetInput<List<DependabotSource>>();
+
+            logger.LogInformation($"Starting Parallel ACI Orchestrators - Max Parallelism: {maxParallelism} - Total tasks: {sources.Count()}");
 
             var parallelTasks = new HashSet<Task>();
             foreach (var source in sources)
@@ -105,10 +110,8 @@ namespace DependabotOrchestrator
         }
 
         [FunctionName("CheckExecution")]
-        public static bool CheckExecution([ActivityTrigger] string containerGroupName, ILogger log) =>
-            //TODO
-
-            true;
+        public static bool CheckExecution([ActivityTrigger] string containerGroupName, ILogger log) 
+            => true; //TODO
 
         [FunctionName("DeleteACIGroup")]
         public static async Task Orchestrator_Delete_ACI_Group([ActivityTrigger] string containerGroupName, ILogger logger)
