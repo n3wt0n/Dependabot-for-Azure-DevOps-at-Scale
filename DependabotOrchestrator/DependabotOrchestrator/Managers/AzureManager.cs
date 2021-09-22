@@ -76,6 +76,7 @@ namespace DependabotOrchestrator.Managers
                                                 .WithEnvironmentVariables(environmentVariables)                                                
                                                 .Attach()                                            
                                             .WithDnsPrefix(containerGroupName)
+                                            .WithRestartPolicy(Microsoft.Azure.Management.ContainerInstance.Fluent.Models.ContainerGroupRestartPolicy.Never)
                 .CreateAsync();
 
                 logger.LogInformation($"\nCreation of container group '{containerGroupName}' completed!");

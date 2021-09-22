@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo Executing workload
-/Test/test-workload.sh |& tee dependabot-output.txt
+/Test/test-workload.sh
 
 echo Raising the Job Finished event
-/Test/event-handler.sh |& tee event-handler-output.txt
+/Test/event-handler.sh
