@@ -73,8 +73,8 @@ namespace DependabotOrchestrator.Managers
                                                 .WithExternalTcpPort(80)
                                                 .WithCpuCoreCount(1.0)
                                                 .WithMemorySizeInGB(1)
-                                                .WithEnvironmentVariables(environmentVariables)
-                                                .Attach()
+                                                .WithEnvironmentVariables(environmentVariables)                                                
+                                                .Attach()                                            
                                             .WithDnsPrefix(containerGroupName)
                 .CreateAsync();
 
@@ -110,6 +110,8 @@ namespace DependabotOrchestrator.Managers
             logger.LogInformation($"Deleting container group '{containerGroupName}'...");
 
             await azure.ContainerGroups.DeleteByIdAsync(containerGroup.Id);
+
+            logger.LogInformation($"Container group '{containerGroupName}' deleted");
         }
     }
 }

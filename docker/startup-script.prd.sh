@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo Executing workload
 bundle exec ruby generic-update-script.rb
 

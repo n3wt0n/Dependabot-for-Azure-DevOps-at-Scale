@@ -1,10 +1,13 @@
 FROM alpine:latest
 
 COPY ["startup-script.test.sh", "Test/"]
+RUN ["chmod", "+x", "Test/startup-script.test.sh"]
 
 COPY ["test-workload.sh", "Test/"]
+RUN ["chmod", "+x", "Test/test-workload.sh"]
 
 COPY ["event-handler.sh", "Test/"]
+RUN ["chmod", "+x", "Test/event-handler.sh"]
 
 RUN apk --no-cache add curl
 
