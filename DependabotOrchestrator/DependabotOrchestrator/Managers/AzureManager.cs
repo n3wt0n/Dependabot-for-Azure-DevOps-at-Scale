@@ -67,7 +67,7 @@ namespace DependabotOrchestrator.Managers
                                             .WithLinux()
                                             //.WithPrivateImageRegistry(Environment.GetEnvironmentVariable("a"), Environment.GetEnvironmentVariable("b"), Environment.GetEnvironmentVariable("c"))
                                             .WithPublicImageRegistryOnly()
-                                            .WithNewAzureFileShareVolume("sharedfs","dependabotsharedabenveg")
+                                            .WithNewAzureFileShareVolume("sharedfs","dependabotsharedabenveg") //used for test and debug purposes
                                             //.WithoutVolume()
                                             .DefineContainerInstance(containerGroupName)
                                                 .WithImage(Settings.FullContainerImageName)
@@ -75,7 +75,7 @@ namespace DependabotOrchestrator.Managers
                                                 .WithCpuCoreCount(1.0)
                                                 .WithMemorySizeInGB(1)
                                                 .WithEnvironmentVariables(environmentVariables)      
-                                                .WithVolumeMountSetting("sharedfs","/output")
+                                                .WithVolumeMountSetting("sharedfs","/output") //used for test and debug purposes
                                                 .Attach()                                            
                                             .WithDnsPrefix(containerGroupName)
                                             .WithRestartPolicy(Microsoft.Azure.Management.ContainerInstance.Fluent.Models.ContainerGroupRestartPolicy.Never)
