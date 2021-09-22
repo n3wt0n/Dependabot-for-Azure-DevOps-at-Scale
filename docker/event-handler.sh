@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
 curl -X POST $JOBCOMPLETE_FUNCTION_URL/$ORCHESTRATOR_INSTANCE_ID

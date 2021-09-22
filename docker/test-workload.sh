@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo Waiting 1 minutes to simulate actual workload
 
