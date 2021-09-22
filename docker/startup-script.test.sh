@@ -1,5 +1,7 @@
+#!/bin/bash
+
 echo Executing workload
-/Test/test-workload.sh
+test-workload.sh
 
 echo Raising the Job Finished event
-/Test/event-handler.sh
+event-handler.sh
