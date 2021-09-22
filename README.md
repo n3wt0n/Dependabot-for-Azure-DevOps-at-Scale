@@ -31,6 +31,8 @@ __Deployment Scripts__                  | 0%    |
 
 ![ACI Orchestrator Flow](/assets/ACI_Orchestration_Flow.jpg)
 
+> Note: because of the container image size, it currently takes about 3 to 4 minutes for the ACI Container Group to pull it and start
+
 ### Prerequisites
 
 - PAT on Azure DevOps

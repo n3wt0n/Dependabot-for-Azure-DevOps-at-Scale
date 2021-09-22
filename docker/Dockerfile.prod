@@ -4,4 +4,4 @@ COPY ["startup-script.prd.sh", "."]
 
 COPY ["event-handler.sh", "."]
 
-ENTRYPOINT ["sh", "startup-script.prd.sh"]
+ENTRYPOINT ["bash", "startup-script.prd.sh"]
